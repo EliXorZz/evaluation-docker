@@ -3,9 +3,9 @@
 ## Lien VPS
 
 - http://195.110.34.198:40110 (nginx)
-- http://195.110.34.198:40120 (grafana)
 - http://195.110.34.198:40130 (prometheus)
-- https://195.110.34.198:40140 (portainer)
+- http://195.110.34.198:40120 (grafana | admin:admin)
+- https://195.110.34.198:40140 (portainer | admin:adminpassword)
 
 ## Partie 1 (API & Dockerfile)
 
