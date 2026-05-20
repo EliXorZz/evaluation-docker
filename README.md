@@ -1,5 +1,9 @@
 # Rendu Docker 20-05-2026
 
+## Lien VPS
+
+- http://195.110.34.198
+
 ## Partie 1 (API & Dockerfile)
 
 ### Fichiers
@@ -94,4 +98,16 @@ Les images et conteneurs sont recréables automatiquement, mais les données per
 `Portainer.io`
 ![img_11.png](captures/img_12.png)
 
-## Partie 8
+## Partie 8 (Volumes)
+
+### Captures
+
+## Partie 9 (CI/CD avec GitHub Actions)
+
+### Fichiers
+[.github/workflows/docker.yml](.github/workflows/docker.yml)
+
+### Captures
+
+`Github Action`
+![img_13.png](captures/img_13.png)
