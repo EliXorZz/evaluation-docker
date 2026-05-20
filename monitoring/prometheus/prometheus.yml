@@ -2,13 +2,13 @@ global:
   scrape_interval: 5s
 
 scrape_configs:
-  - job_name: "api-cat"
+  - job_name: "cat"
     static_configs:
-      - targets: ["api-cat:3000"]
+      - targets: ["cat:3000"]
 
-  - job_name: "api-dog"
+  - job_name: "dog"
     static_configs:
-      - targets: [ "api-dog:3000" ]
+      - targets: [ "dog:3000" ]
 
   - job_name: "node-exporter"
     static_configs:
