@@ -1,0 +1,17 @@
+services:
+  nginx:
+    restart: always
+  api-cat:
+    restart: always
+  api-dog:
+    restart: always
+  grafana:
+    restart: always
+  prometheus:
+    restart: always
+  node-exporter:
+    restart: always
+  cadvisor:
+    restart: always
+  portainer:
+    restart: always

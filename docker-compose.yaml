@@ -1,0 +1,73 @@
+services:
+  nginx:
+    image: nginx:1.31.0
+    ports:
+      - '${NGINX_PORT}:80'
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      cat:
+        condition: service_healthy
+      dog:
+        condition: service_healthy
+  cat:
+    image: 127.0.0.1:5000/api:1.0
+    environment:
+      PET: ${CAT_SERVICE_PET}
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "-q", "http://localhost:3000/healthz" ]
+      interval: 1m
+      timeout: 10s
+      retries: 5
+      start_period: 3s
+  dog:
+    image: 127.0.0.1:5000/api:1.0
+    environment:
+      PET: ${DOG_SERVICE_PET}
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "-q", "http://localhost:3000/healthz" ]
+      interval: 1m
+      timeout: 10s
+      retries: 5
+      start_period: 3s
+  grafana:
+    image: grafana/grafana:11.0.0
+    ports:
+      - '${GRAFANA_PORT}:3000'
+    volumes:
+      - ./monitoring/grafana:/etc/grafana/provisioning
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - nginx
+      - node-exporter
+      - cadvisor
+  node-exporter:
+    image: prom/node-exporter:v1.8.1
+    command:
+      - '--path.rootfs=/host'
+    pid: host
+    volumes:
+      - '/:/host:ro,rslave'
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.49.1
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+  portainer:
+    image: portainer/portainer-ce:2.41.1
+    ports:
+      - '${PORTAINER_PORT}:9443'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+volumes:
+  grafana_data:
+  portainer_data:
