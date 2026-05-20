@@ -2,7 +2,10 @@
 
 ## Lien VPS
 
-- http://195.110.34.198
+- http://195.110.34.198:40110 (nginx)
+- http://195.110.34.198:40120 (grafana)
+- http://195.110.34.198:40130 (prometheus)
+- http://195.110.34.198:40140 (portainer)
 
 ## Partie 1 (API & Dockerfile)
 

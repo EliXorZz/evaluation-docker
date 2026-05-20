@@ -54,6 +54,8 @@ services:
         condition: service_healthy
   prometheus:
     image: prom/prometheus
+    ports:
+      - "${PROMETHEUS_PORT}:9090"
     volumes:
       - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     healthcheck:
