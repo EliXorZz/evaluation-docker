@@ -103,7 +103,15 @@ Les images et conteneurs sont recréables automatiquement, mais les données per
 
 ## Partie 8 (Volumes)
 
+### Questions
+
 ### Captures
+
+`docker volume ls`
+![img_14.png](captures/img_14.png)
+
+`docker volume inspect evaluation-docker_grafana_data`
+![img_15.png](captures/img_15.png)
 
 ## Partie 9 (CI/CD avec GitHub Actions)
 
