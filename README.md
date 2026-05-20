@@ -103,7 +103,11 @@ Les images et conteneurs sont recréables automatiquement, mais les données per
 
 ## Partie 8 (Volumes)
 
-### Questions
+### Justification
+
+Les volumes nommés sont utilisés pour les données persistantes comme Grafana et le registry, db, etc ... afin de conserver les données après la suppression des conteneurs.
+
+Les bind mounts sont utilisés pour les fichiers de configuration, comme `prometheus.yml`, `default.conf` de Nginx et les fichiers de provisioning Grafana, afin de pouvoir les modifier facilement sans rebuild les images.
 
 ### Captures
 
